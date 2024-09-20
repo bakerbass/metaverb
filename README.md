@@ -1,9 +1,3 @@
-Author: Ryan Baker
-Email: ryanbakermusic@outlook.com
-Date: June 15th, 2024
-Website: ryanbakermusic.tech
-AES MATLAB Hackathon
-
 - [ ] Make a basic juce reverb plugin
   - [ ] https://docs.juce.com/master/classdsp_1_1Reverb.html#details
   - [ ] https://docs.juce.com/master/structReverb_1_1Parameters.html#add75191e7a163d95cd807cbc72fa192c
@@ -30,6 +24,8 @@ AES MATLAB Hackathon
       - [ ] earlyReflections.h
       - [ ] chorus.h
         - [ ] lfo.h
+
+
 The included plugin is my submission for the AES MATLAB Hackathon for the Europe 2024 conference. 
 The source Matlab file is titled FDN.m
 This reverb plugin features spinning reflections via a chorus effect, 
