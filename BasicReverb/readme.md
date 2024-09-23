@@ -7,7 +7,7 @@ A basic reverb plugin created using the [JUCE reverb class](https://docs.juce.co
 - Width/Wideness
 - Freeze Mode
 - [JUCE Documentation](https://docs.juce.com/master/structReverb_1_1Parameters.html#add75191e7a163d95cd807cbc72fa192c)
-Note that the freeze parameter is probably not useful for impulse response matching.
+- Note that the freeze parameter is probably not useful for impulse response matching.
 ## To do:
  - [ ] Implement reverb processing
  - [ ] Implement additional processing e.g. filtering
