@@ -207,22 +207,23 @@ juce::AudioProcessorValueTreeState::ParameterLayout TestProjectAudioProcessor::c
     layout.add(std::make_unique<juce::AudioParameterFloat>(
         myParameterID::r_wet,
         "Wet Level",
-        juce::NormalisableRange<float>(0.f, 1.f, 0.01f), 0.3f,
+        juce::NormalisableRange<float>(0.f, 1.f, 0.01f), 1.f,
         juce::AudioParameterFloatAttributes()));
     layout.add(std::make_unique<juce::AudioParameterFloat>(
         myParameterID::r_dry,
-        "RDry Level",
-        juce::NormalisableRange<float>(0.f, 1.f, 0.01f), 0.3f,
+        "Dry Level",
+        juce::NormalisableRange<float>(0.f, 1.f, 0.01f), 0.f,
         juce::AudioParameterFloatAttributes()));
     layout.add(std::make_unique<juce::AudioParameterFloat>(
         myParameterID::r_width,
         "Wideness",
         juce::NormalisableRange<float>(0.f, 1.f, 0.01f), 0.3f,
         juce::AudioParameterFloatAttributes()));
-    layout.add(std::make_unique<juce::AudioParameterFloat>(
+    layout.add(std::make_unique<juce::AudioParameterBool>(
         myParameterID::r_freeze,
         "Freeze",
-        juce::NormalisableRange<float>(0.f, 1.f), 0.f,
-        juce::AudioParameterFloatAttributes()));
+        false, // Default value for the bool parameter
+        juce::AudioParameterBoolAttributes()));
+
     return layout;
 }
