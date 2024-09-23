@@ -1,8 +1,6 @@
 - [ ] Make a basic juce reverb plugin
-  - [ ] https://docs.juce.com/master/classdsp_1_1Reverb.html#details
-  - [ ] https://docs.juce.com/master/structReverb_1_1Parameters.html#add75191e7a163d95cd807cbc72fa192c
-  - [ ] link for libtorch to use: https://download.pytorch.org/libtorch/cpu/ (use 2.1.1)
 - [ ] Calibrate diffusion parameters to a reverb time
+- [LibTorch](https://download.pytorch.org/libtorch/cpu/) (use 2.1.1)
   - [ ] neural net?
   - [ ] Researching how new tools can be used for this old problem
   - [ ] Using 1 inputs to 3 output (decay time - > allpass, feedback, number of feedback branches)
