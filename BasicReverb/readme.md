@@ -1,12 +1,12 @@
 A basic reverb plugin created using the [JUCE reverb class](https://docs.juce.com/master/classdsp_1_1Reverb.html#a67582b7d70a6a0f444be8e3649b184b3)
 ## Parameters:
-Room size
-Damping
-Wet Level
-Dry Level
-Width/Wideness
-Freeze Mode
-[JUCE Documentation](https://docs.juce.com/master/structReverb_1_1Parameters.html#add75191e7a163d95cd807cbc72fa192c)
+- Room size
+- Damping
+- Wet Level
+- Dry Level
+- Width/Wideness
+- Freeze Mode
+- [JUCE Documentation](https://docs.juce.com/master/structReverb_1_1Parameters.html#add75191e7a163d95cd807cbc72fa192c)
 Note that the freeze parameter is probably not useful for impulse response matching.
 ## To do:
  - [ ] Implement reverb processing
