@@ -1,4 +1,6 @@
 A basic reverb plugin created using the [JUCE reverb class](https://docs.juce.com/master/classdsp_1_1Reverb.html#a67582b7d70a6a0f444be8e3649b184b3)
+![image](https://github.com/user-attachments/assets/a924bd3e-0d3f-44a1-931f-e9cff09fed89)
+
 ## Parameters:
 - Room size
 - Damping
