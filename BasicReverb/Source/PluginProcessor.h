@@ -68,7 +68,7 @@ public:
 
 private:
 
-  juce::Reverb reverb;
+  juce::dsp::Reverb reverb;
 
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
 
@@ -85,7 +85,7 @@ private:
     juce::AudioParameterFloat*  wetLevelParameter;
     juce::AudioParameterFloat*  dryLevelParameter;
     juce::AudioParameterFloat*  widthParameter;
-    juce::AudioParameterFloat*  freezeParameter;
+    juce::AudioParameterBool*   freezeParameter;
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TestProjectAudioProcessor)

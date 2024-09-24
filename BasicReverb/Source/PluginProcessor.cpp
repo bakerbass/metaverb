@@ -22,10 +22,19 @@ TestProjectAudioProcessor::TestProjectAudioProcessor()
                        )
 #endif
 {
+    apvts.state.addListener(this);
+    
+    castParameter(apvts, myParameterID::r_size, roomSizeParameter);
+    castParameter(apvts, myParameterID::r_damping, dampingParameter);
+    castParameter(apvts, myParameterID::r_wet, wetLevelParameter);
+    castParameter(apvts, myParameterID::r_damping, dryLevelParameter);
+    castParameter(apvts, myParameterID::r_width, widthParameter);
+    castParameter(apvts, myParameterID::r_freeze, freezeParameter);
 }
 
 TestProjectAudioProcessor::~TestProjectAudioProcessor()
 {
+    apvts.state.removeListener(this);
 }
 
 //==============================================================================
@@ -63,7 +72,7 @@ bool TestProjectAudioProcessor::isMidiEffect() const
 
 double TestProjectAudioProcessor::getTailLengthSeconds() const
 {
-    return 0.0;
+    return 0.0; // This should change once reverb time is calibrated as a parameter
 }
 
 int TestProjectAudioProcessor::getNumPrograms()
@@ -93,6 +102,13 @@ void TestProjectAudioProcessor::changeProgramName (int index, const juce::String
 //==============================================================================
 void TestProjectAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
+    parametersChanged.store(true);
+    juce::dsp::ProcessSpec spec;
+    spec.sampleRate = sampleRate;
+    spec.maximumBlockSize = samplesPerBlock;
+    spec.numChannels = getTotalNumInputChannels();
+
+    reverb.prepare(spec);
 }
 
 void TestProjectAudioProcessor::releaseResources()
@@ -142,18 +158,15 @@ void TestProjectAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, 
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
 
-    // This is the place where you'd normally do the guts of your plugin's
-    // audio processing...
-    // Make sure to reset the state if your inner loop is processing
-    // the samples and the outer loop is handling the channels.
-    // Alternatively, you can process the samples with the channels
-    // interleaved by keeping the same state.
-    for (int channel = 0; channel < totalNumInputChannels; ++channel)
+    bool expected = true;
+    if (isNonRealtime() || parametersChanged.compare_exchange_strong(expected, false))
     {
-        auto* channelData = buffer.getWritePointer (channel);
-
-        // ..do something to the data...
+        update();
     }
+
+    juce::dsp::AudioBlock<float> audioBlock(buffer);
+    juce::dsp::ProcessContextReplacing<float> context(audioBlock);
+    reverb.process(context);
 }
 
 //==============================================================================
@@ -188,6 +201,19 @@ void TestProjectAudioProcessor::setStateInformation (const void* data, int sizeI
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
     return new TestProjectAudioProcessor();
+}
+//==============================================================================
+void TestProjectAudioProcessor::update()
+{
+    juce::dsp::Reverb::Parameters reverbParams;
+
+    reverbParams.roomSize = roomSizeParameter->get();
+    reverbParams.damping = dampingParameter->get();
+    reverbParams.wetLevel = wetLevelParameter->get();
+    reverbParams.dryLevel = dryLevelParameter->get();
+    reverbParams.freezeMode = float(freezeParameter->get());
+    
+    reverb.setParameters(reverbParams);
 }
 juce::AudioProcessorValueTreeState::ParameterLayout TestProjectAudioProcessor::createParameterLayout()
 {
