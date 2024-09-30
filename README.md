@@ -1,3 +1,4 @@
+https://github.com/yeeking/ai-enhanced-audio-book
 - [ ] Make a basic juce reverb plugin
 - [ ] Calibrate diffusion parameters to a reverb time
 - [LibTorch](https://download.pytorch.org/libtorch/cpu/) (use 2.1.1)
