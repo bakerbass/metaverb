@@ -1,6 +1,6 @@
--[DAFX 2022 Edition via GT Library](https://galileo-gatech.primo.exlibrisgroup.com/permalink/01GALI_GIT/j1hv6p/alma9915021260202947)
--[AI Audio Effects Github](https://github.com/yeeking/ai-enhanced-audio-book)
--[Paper to read](https://github.gatech.edu/MUSI8001-Fall2024/Ryan-Baker/blob/main/Bibliography/Analyzing%20Published%20Research%20/PDFs/Automatic_Impulse_Response_Matching_for_Reverb_Plugins__doc.pdf)
+- [DAFX 2022 Edition via GT Library](https://galileo-gatech.primo.exlibrisgroup.com/permalink/01GALI_GIT/j1hv6p/alma9915021260202947)
+- [AI Audio Effects Github](https://github.com/yeeking/ai-enhanced-audio-book)
+- [Paper to read](https://github.gatech.edu/MUSI8001-Fall2024/Ryan-Baker/blob/main/Bibliography/Analyzing%20Published%20Research%20/PDFs/Automatic_Impulse_Response_Matching_for_Reverb_Plugins__doc.pdf)
 - [ ] Make a basic juce reverb plugin
 - [ ] Calibrate diffusion parameters to a reverb time
 - [LibTorch](https://download.pytorch.org/libtorch/cpu/) (use 2.1.1)
